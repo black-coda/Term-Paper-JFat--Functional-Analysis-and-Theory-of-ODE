@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+
+\title{Math Course Report Sheet}
+\author{Your Name}
+\date{\today}
+
+\maketitle
+
+\section*{Course Information}
+
+\begin{itemize}
+    \item Course Name: Math 411
+    \item Instructor: Prof. J.O Fatokun
+    \item Semester: Winter 2023/24
+\end{itemize}
+
+\section*{Synopsis}
+\begin{itemize}
+    \item Existence and Unique of Solutions of Differential Equations
+    \item Lipshitiz Condition
+    \subitem Continuity
+    \subitem Stability
+
+    \item Reduction of $n_{th}$ order ODE to a system
+    \item Linear System
+\end{itemize}
+
+
+\newpage
+
+\section{Lipshitiz Condition}
+
+Definition 1: A function $f(x,y)$ is said to satisfy a Lipshitiz condition at x $\in(a,b)$, if there exist a constant $M>0$ and $\epsilon >0$ such that $|x-y| \leq \epsilon$ and $y \in (a,b)$, then $|f(x,y)-f(x,y)| \leq M|x-y|$
+
+where M is called the Lipshitiz constant and is generally represented as L.
+\newline
+Definition 2: A function $f(x,y)$ issaid to satisfy a Lipshitiz condition in a vaiable Y on a rectangle $R: a \leq x \leq b, c \leq y \leq d$ if there exist a constant $L>0$ such that $|f(x,y)-f(x,y)| \leq L|y-y|$ for all $(x,y)$ in $R$.
+
+\subsection*{Example 1:}Show that the function $f(x,y) = \frac{2y}{x} + x^{2}e^{x}$ satisfy a Lipshitiz condition in the variable y on the rectangle $D: 1 \leq x \leq 2$.
+
+\subsection*{Solutions}
+Let there exist two arbitiary point $\in$ D, i.e $(x,y_{1}) and (x,y_{2})$, then
+
+\begin{equation} \label{eq1}
+    \begin{split}
+        |f(x, y_{1}) - f(x, y_{2})| & = \left|\frac{2y_{1}}{x} + x^{2}e^{x} - \frac{2y_{2}}{x} - x^{2}e^{x}\right| \\
+        & = \left|\frac{2y_{1} - 2y_{2}}{x} - x^{2}e^{x}\right| \\
+        & = \frac{2|y_{1} - y_{2}|}{x} + |x^{2}e^{x}| \\
+        & \leq \frac{2|y_{1} - y_{2}|}{1} + x^{2}e^{x} \\
+        & = 2|y_{1} - y_{2}| + x^{2}e^{x} \\
+        & = L|y_{1} - y_{2}| \quad \text{(where } L = 2 + x^{2}e^{x})
+    \end{split}
+\end{equation}
+
+Hence $L = 2$
+\newline
+Definition 3: A set D, $D\subseteq R^{2}$, is said to be convex if whenever two point $(x_{1}, y_{1})$ and $(x_{2}, y_{2})$ belongs to D, $\exists \lambda \in [0,1]$, then the point $(\lambda x_{1} + (1-\lambda)x_{2}, \lambda y_{1} + (1-\lambda)y_{2})$ also belongs to D.
+
+
+\subsection*{Theorem 1:} Suppose that $f(x,y)$ is defined on a convex set $D \subset R^{2}$, if a constant $L > 0$, exist with jacobian $|f_{y}(x,y)| \leq L$ for all $(x,y) \in D$, then $f(x,y)$ satisfies a Lipshitiz condition in the variable y on D with Lipshitiz constant $L$.
+
+
+\subsubsection{Existence and Uniqueness of Solutions of Differential Equations}
+
+\subsection*{Theorem 2:} Suppose that domain $D = {(x,y): a \leq x \leq b, - \infty < y < \infty }$ and f(x,y) is continous in D and satisfies a Lipshitiz condition in the variable y on D with Lipshitiz constant $L$. Then the initial value problem:
+
+\begin{equation} \label{eq2}
+    \begin{split}
+        y^{'} = f(x,y), 
+        y(\alpha) = \beta,
+        a \leq x \leq b,
+    \end{split}
+\end{equation}
+has a unique solution $y(x) \forall x \in [a,b]$
+
+\subsubsection*{Example 2:} Show that their is a unique solution to the following I.V.P, using the lipshitz condition approach.
+
+$y^{'} = 1 + xsin(xy); 0\leq x \leq 2; y(0) = 0$
+\subsection*{Solution:}
+Let $y_{1}, y_{2} \in D$, Using mean value Theorem
+
+\begin{eqnarray}
+    \frac{f(x,y_{2})-f(x,y_{1})}{y_{2}-y_{1}} = \frac{\partial f(x,\epsilon)}{\partial y},
+    \epsilon \in (y_{1},y_{2})
+\end{eqnarray}
+
+
+\begin{equation*}
+    \begin{split}
+        y_{'} = 1 + xsin(xy); 0\leq x \leq 2; y(0) = 0 \\
+        \frac{\partial f(x,\epsilon)}{\partial y} = x^{2}cos(\epsilon x) \\
+        f(x,y_{2}) - f(x,y_{1}) = x^{2}cos(\epsilon x)(y_{2}-y_{1})\\ 
+        x = 2: \\
+        |f(x,y_{2}) - f(x,y_{1})| = 2^{2}|y_{2}-y_{1}|
+    \end{split}
+\end{equation*}
+
+\subsubsection*{Well-Posedness}
+Equation (2) is said to be well posed problem if
+
+\begin{enumerate}
+    \item A unique solution y(x) to the problem exist
+    \item if there exist a constant $\epsilon_{0} > 0$ and $k>0$ such that for any $\epsilon$ satisfy the condition $\epsilon_{0} > \epsilon > 0$, whenever a $\gamma(x)$ is continous with
+    $| \gamma(x)| < \epsilon, \forall x \in [a,b] $, and when
+    $| \gamma_{0}| < \epsilon$, the ivp $\frac{dz}{dx} = f(x,z)+ \delta(x), a \leq x \leq b; z(a) = a + \delta_{0}$ has a unique solution $z(x)$ that satisfies $|z(x)-y(x)| < k \epsilon; \forall x \in [a,b]$
+\end{enumerate}
+
+
+\subsubsection*{Theorem 3:} 
+Suppose $D = {(x,y): a \le x \le b \text{ and} -\infty < y < \infty}$,and that $f(x,y)$ is continous in D and satisfies Lipshitiz condition on D in a variable y, then the I.V.P, 
+
+
+\section{General Theory of ODEs}
+\subsubsection*{Definition}
+A $n_{th}$ of order ODE is a functional relationship taking the form
+
+\begin{equation}
+    F\biggl(x,y(x),\frac{dy(x)}{dx},\frac{dy^{2}(x)}{dx^{2}}, \dotsm, \frac{dy^{n}(x)}{dx^{n}}\biggr) = 0
+\end{equation}
+
+that involves an independent variable $x \in I \subset R$ and unknown function $y(x) \in D \subset R^{n}$ of the independent variable, it derivates and derivatives up to n. For simplicity the time-dependence of y is often omitted and (4) becomes
+
+\begin{equation}
+    F\biggl(x,y,y^{'},y^{''}, \dotsm ,y^{n}\biggr) = 0
+\end{equation}
+
+\subsubsection*{Normal/Explicit ODE Form}
+An equation of type (4) is said to be normal or in explicit form when it is written in the form
+\begin{equation}
+    y^{n} = F\biggl(x,y,y^{'},y^{''},y^{'''}, \dotsm ,y^{n-1}\biggr)
+\end{equation}
+otherwise they are called implicit form.
+
+Consider (6) in nominal form
+\begin{equation}
+    y^{'} = F(x,y)
+\end{equation}
+is referred to as First Order ODE.
+
+\subsubsection*{Initial Value Problem}
+An initial value problem for (7) is given by
+\begin{equation}
+    y^{'} = F\biggl(x,y\biggr), y(x_{0}) = y_{0}
+\end{equation}
+where $F$ is continuous and real valued on a set $U \subset R \times R^{n}$ with $(x_{0},y_{0}) \in U$.
+
+An IVP for a nth order ODE  takes the form
+\begin{equation}
+   \begin{split}
+    y^{n} = F\biggl(x,y,y^{'},y^{''},y^{'''}, \dotsm ,y^{n-1}\biggr) \\
+    y(x_{0}) = y_{0}, y^{'}(x_{0})=y^{'}_{0},y^{''}(x_{0})=y^{''}_{0} \dots y^{n-1}(x_{0})=y^{n-1}_{0}
+   \end{split}
+\end{equation}
+
+\subsection*{Solutions to an ODE}
+A function $\phi(x)$ is said to be a solution to $(7)$ if it satisfies this equation 
+
+\begin{equation}
+    \phi^{'}(x) = f(x,\phi(x)), \forall x \in I \subset R
+\end{equation}
+an open interval $(x,\phi(x)) \in U, \forall x \in I$
+
+\subsubsection*{Integral Form of Solution}
+The function
+\begin{equation}
+    \phi(x) = y_{0} + \int_{x_{0}}^{x}f(s, \phi(s))ds
+\end{equation}
+
+is called an Integral Form of Solution to (8)
+
+
+\subsubsection*{Reduction of Higher ODE to a System of First order ODE}
+To Reduce an nth order ODE to an equivalent first order system, we shall make some informed representation of the system and eventually make \dots
+
+\subsubsection*{Example 1:}
+Reduce $\frac{d^{3}y}{dx^{3}} + y^{2} = 1$
+
+\subsubsection*{Solution:}
+let:
+\begin{eqnarray*}
+    y_{1} = y \\
+    y_{2} = y^{'} \\
+    y_{3} = y^{''} \\
+\end{eqnarray*}
+then:
+\[ \left.   \right\}  \]
+% \begin{eqnarray*}
+%     \left\{\frac{dy_{1}}{dx} = \frac{dy}{dx} = y^{'} = y_{2} \\
+%     \frac{dy_{2}}{dx} = y^{''} = y_{3} \\
+%     \frac{dy_{3}}{dx} = y^{'''} = 1-y_{1}^{2} \\ \right\}
+% \end{eqnarray*}
+Thus the system
+
+
+\section{Existence of Solutions of Ordinary Differential Equations}
+Consider equation (8), The existence of solution if (8) will be obtained in relation the domain $R$ by considering a subset of the time interval
+\[|x-x_{0}| \leq a\]
+defined by \[|x-x_{0}| \leq \alpha\]
+\end{document}

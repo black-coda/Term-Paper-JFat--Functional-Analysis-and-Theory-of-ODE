@@ -1,0 +1,577 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+
+\geometry{margin=1in}
+
+\title{MTH 412: Functional Analysis Assignment}
+\author{OKWHAROBO Solomon Monday}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\thispagestyle{empty} % No page number for this page
+
+\begin{center}
+    \vspace{6cm}
+    \textbf{Anchor University} \\
+    \textbf{Department of Mathematics} \\
+    \textbf{AUL/SCI/20/00605}
+\end{center}
+
+
+
+
+
+\newpage
+
+\setcounter{page}{1} % Start page numbering from here
+
+\section{Normed Linear Space}
+\subsubsection*{Definition 1:}
+Let $X$ be a vector space over the scalar field $K = \mathcal{R}$, then a function $\|.\|: X \to \mathcal{R}$, defined by 
+\[f: X \times X \to X\] and \[f: K \times X \to X\], called respectively addition and scalar multiplication, and are defined for arbitrary $x,y \in X, \lambda \in K$ then $x+y \in X$ and $\lambda.x \in X$ such that the following conditions are satisfied:
+\begin{enumerate}
+    \item $x + y = y + x$ for all $x, y \in X$ (Commutative)
+    \item $(x + y) + z = x + (y + z)$ for all $x, y, z \in X$ (Associative)
+    \item There exists an element $0 \in X$ such that $x + 0 = x$ for all $x \in X$ (Identity)
+    \item For each $x \in X$, there exists an element $-x \in X$ such that $x + (-x) = 0$ (Inverse)
+    \item $\lambda(x + y) = \lambda x + \lambda y$ for all $\lambda \in K$ and $x, y \in X$ (Distributive)
+    \item $(\lambda + \mu)x = \lambda x + \mu x$ for all $\lambda, \mu \in K$ and $x \in X$ (Distributive)
+    \item $(\lambda \mu)x = \lambda(\mu x)$ for all $\lambda, \mu \in K$ and $x \in X$ (Associative)
+    \item $1.x = x$ for all $x \in X$ (Identity)
+\end{enumerate}
+
+Then $X$ is called a linear space over $K$ or a vector space over $K$.If $K$ is a set of real numbers $X$ is called a real vector space. If $K$ is a set of complex numbers $X$ is called a complex vector space.
+
+\subsection*{Definition 2:} Let $x$ be a non-empty set, $k$ be a scalar field $(K = \mathcal{R})$. Suppose that we have a function $\|.\|: X \to \mathcal{R}$, then $\|.\|$ is called a norm on $X$ if it satisfies the following conditions:
+
+\begin{enumerate}
+    \item $\|x\| \geq 0$ for all $x \in X$ and $\|x\| = 0$ if and only if $x = 0$.
+    \item $\|\alpha x\| = |\alpha|\|x\|$ for all $x \in X$ and $\alpha \in K$.
+    \item $\|x + y\| \leq \|x\| + \|y\|$ for all $x, y \in X$. (Triangle Inequality)
+    \end{enumerate}
+
+\subsubsection*{Proof}
+
+\textbf{Statement:}Let $X = \mathbb{R}^{2}$ for arbitiary $\bar{x}, \bar{y}$,
+
+where $\bar{x} = (x_{1}, x_{2})$ and $\bar{y} = (y_{1}, y_{2})$, and with $\alpha \in \mathbb{R}$  define the operation, addition and scalar multiplication as:
+\[\bar{x} + \bar{y} = (x_{1} + y_{1}, x_{2} + y_{2})\]
+scalar multiplication:
+\[\alpha \bar{x} = (\alpha x_{1}, \alpha x_{2})\]
+with these definitions, $\mathbb{R}^{2}$ is a vector space.
+for each $\bar{x} \in X$, we define the maximum norm
+\[\|\bar{x}\|_{\infty} = \max\{|x_{1}|, |x_{2}|\}\] is a normed on $\mathbb{R}^{2}$.
+\newline
+\textbf{N1:}
+\begin{eqnarray*}
+    \|x\|_{\infty} \geq 0 \quad \text{for all} \quad x \in \mathbb{R}^{2} \\
+    \|x\|_{\infty} = \max\{|x_{1}|, |x_{2}|\} \geq 0 \quad \text{for all} \quad x \in \mathbb{R}^{2} \\
+    \|x\|_{\infty} = \max\{|x_{1}|, |x_{2}|\} = 0 \quad \text{if and only if} \quad x = 0
+\end{eqnarray*}
+\newline
+\textbf{N2:}
+\newline
+\begin{eqnarray*}
+    \|\alpha x\|_{\infty} = \max\{|\alpha x_{1}|, |\alpha x_{2}|\} = |\alpha|\max\{|x_{1}|, |x_{2}|\} = |\alpha|\|x\|_{\infty}
+\end{eqnarray*}
+\textbf{N3:}
+\newblock
+
+\textbf{Proof:}
+
+Let $\bar{x} = (x_{1}, x_{2})$ and $\bar{y} = (y_{1}, y_{2})$ be arbitrary elements of $\mathbb{R}^{2}$ and $\alpha \in \mathbb{R}$,
+\newline
+$\| x+ y \|_{\infty} \leq  \| x \|_{\infty} + \|y\|_{\infty} $, then,
+
+
+\begin{center}
+    \begin{eqnarray*}
+      \| x+ y \|_{\infty} =\\
+      & = \|x_{1} + y_{1},x_{2} + y_{2}\| \\
+      & = \max\{|x_{1} + y_{1}|, |x_{2} + y_{2}|\} \\
+      & = \underset{1 < i < 2}{\max(\| x_i \| + \| y_i \|)} \\
+      & \leq  \underset{1 < i < 2}{\max(\| x_i \|) + \max(\| y_i \|)} \\
+      & \leq  \|\bar{x}\|_{\infty} + \|\bar{y}\|_{\infty} \\
+      & = \| x + y \|_{\infty} \leq \|\bar{x}\|_{\infty} + \|\bar{y}\|_{\infty}
+    \end{eqnarray*}
+\end{center}
+
+
+\section*{Q2: Prove that X = $\mathbb{R}$ is a Normed Space}
+
+\textbf{Statement:}Let $X = \mathbb{R}$ for arbitrary $\bar{x},$,
+
+where $\bar{x} = (x_{1}, x_{2},x_{3}, x_{4},\dots x_{n}) \in \mathbb{R}^{n}$, and with $\alpha \in \mathbb{R}$, then $\| \bar{x}\|_{p} = \|(x_{1}, x_{2},x_{3}, x_{4},\dots x_{n})\|_{p}$ \\
+$ = (\sum_{i = 1}^{n} \|x_{i}\|^{p})^{\frac{1}{p}}$
+verify that $ \|.\|$ is a norm. \\
+
+\subsection*{\textbf{Proof:}}
+
+
+
+
+\subsection*{N1: $ \|x\| > 0,$ iff $x = 0$} 
+
+\hbox{
+  $(\sum_{i = 1}^{n} \|x_{i}\|^{p})^{\frac{1}{p}} \geq 0$ \\$\| \bar{x}\|_{p} \geq 0$ clearly because absolute value of any value is greater than or equal to 1
+   \\
+
+}
+\textbf{Also,}
+
+if $\bar{x} = 0 \implies \forall 1 < i < n \implies (\sum_{i = 1}^{n} \|x_{i}\|^{p})^{\frac{1}{p}} = 0$ \\
+
+
+\subsection*{N2: $ \| \alpha \bar{x} \|_{p} = | \alpha |  \|\bar{x}\|$} 
+
+
+\begin{center}
+    \begin{eqnarray*}
+      \| \alpha \bar{x} \|_{p} =  \| \alpha(x_{1}, x_{2},x_{3}, x_{4},\dots x_{n}) \|_{p} = (\sum_{i = 1}^{n} \|x_{i}\|^{p})^{\frac{1}{p}} \\
+      = \biggl(|\alpha|^{p}\biggr)^{\frac{1}{p}} \biggl(\sum_{i = 1}^{n} \|x_{i}\|^{p}\biggr)^{\frac{1}{p}} \\
+      = |\alpha| \biggl(\sum_{i = 1}^{n} \|x_{i}\|^{p}\biggr)^{\frac{1}{p}} \\
+      = |\alpha|\| \bar{x} \|_{p}
+    \end{eqnarray*}
+\end{center}
+
+
+\subsection*{N3: $\| x+ y \|_{p} \leq  \| x \|_{p} + \|y\|_{p} $} 
+\textbf{We need Holder's inequality}
+
+\begin{center}
+    \begin{eqnarray*}
+      \|\bar{x} + \bar{y}\|_{p}^{p} = \|(x_{1}+ y_{1}) + (x_{2}+ y_{2}) + \dots +(x_{n}+ y_{n})\| \\
+      = \sum_{i = 1}^{n}|x_{i} + y_{i}|^{p}  = \sum_{i = 1}^{n}|x_{i} + y_{i}|^{p-1} |x_{i} + y_{i}|\\  
+      Applying Holder's Theorem \\
+      \leq \sum_{i = 1}^{n}|x_{i}||x_{i} + y_{i}|^{p-1} + \sum_{i = 1}^{n}|y_{i}||x_{i} + y_{i}|^{p-1} \\
+      \leq \biggl[\big(\sum_{i = 1}^{n}|x_{i}|^{p}\big)^\frac{1}{p}\big(\sum_{i = 1}^{n}|x_{i}+ y_{i}|^{q(p-1)} \big)^{\frac{1}{q}}\biggr] +  \biggl[\big(\sum_{i = 1}^{n}|y_{i}|^{p}\big)^\frac{1}{p}\big(\sum_{i = 1}^{n}|x_{i}+ y_{i}|^{q(p-1)} \big)^{\frac{1}{q}}\biggr] \\
+      \leq \Biggl(\|x\|_{p} + \|y\|_{p}\Biggr)\Biggl(\sum_{i = 1}^{n}|x_{i}+ y_{i}| \Biggr)^{\frac{p}{q}} \\
+      \implies \|\bar{x} + \bar{y}\|_{p} = \|\bar{x}\|_{p} + \|\bar{y}\|_{q}
+    \end{eqnarray*}
+Recall in Holder's inequality: $\frac{1}{p} + \frac{1}{q} = 1$,1 - $\frac{1}{p} =  \frac{p-1}{p} = 1$ \\
+
+$p = q(p-1)$
+\end{center}
+
+
+\section{Completeness of Normed Linear Space}
+Recall that if $(E, ||.||)$ is a normed linear space, the norm $||.||$ always induces a matrix $\rho$ on $E$ given by:
+
+\(\rho(x,y) = ||x-y||, \forall x,y \in E\), with this it is clear that $(E,\rho)$ becomes a matrix space.
+
+Recall also that a sequence ${x_n}$ in matrix space $(E,\rho)$ is said to be Cauchy if for every $\epsilon > 0$, there exists $N \in \mathbb{N}$ such that $\rho(x_n,x_m) < \epsilon$ for all $n,m \geq N$.
+
+
+% Chapter 3
+
+\section{Linear maps and Functionals}
+\subsection*{Definition 1:}
+Let $X$ and $Y$ be two vector spaces over the same scalar field $K$. A function $T: X \to Y$ is called a linear map or linear transformation if it satisfies the following conditions:
+
+\begin{enumerate}
+    \item $T(x + y) = T(x) + T(y)$ for all $x, y \in X$ (Additivity)
+    \item $T(\lambda x) = \lambda T(x)$ for all $\lambda \in K$ and $x \in X$ (Homogeneity)
+\end{enumerate}
+
+which is also interpreted as
+
+\begin{math}
+    T(\lambda x + \mu y) = \alpha T(x) + \beta T(y)
+\end{math}
+
+for all $\lambda, \mu \in K$ and $x, y \in X$.
+
+\subsubsection*{Definition 2:}
+If in Definition 1, the linear space $Y$ is replaced by the scalar field $K$, then $T$ is called a linear functional on $X$.
+$i.e$
+\begin{math}
+    T: X \to K
+\end{math}
+
+\subsubsection*{Example 1:}
+Let $X = C[a,b]$ as a space of all real-valued continuous functions on $[a,b]$. Define $T: X \to \mathcal{R}$ by
+\begin{math}
+    Tf(t) = \int_{1}^{0} f(x) dx
+\end{math}
+for all $f \in X$. Then $T$ is a linear functional on $X$.
+
+\subsubsection*{Solution:}
+Let $f, g \in X$ and $\lambda \in \mathcal{R}$, then
+
+\begin{math}
+    T(\mu f + \lambda g) = \int_{1}^{0}\mu (f(x) + \lambda g(x)) dx = \int_{1}^{0} \mu f(x) dx + \lambda \int_{1}^{0} g(x) dx = \mu Tf + \lambda Tg
+\end{math}
+
+$\implies$ $T$ is a linear functional on $X$.
+
+\subsubsection*{Exercise}
+\begin{enumerate}
+    \item Let $X$ = $\mathit{l}_2$, and for each $x = (x_1, x_2, \dots) \in X$, define $T(x) = (0,x,x_2, x_3, \dots)$. Show that $T$ is a linear map on $X$.
+    \item Let $X,Y$ be two vector spaces over the same scalar field $K$. Show that $T: R \to R$ is a linear function, then $T: R \to R$ be given by $T(x) = 3x + 2$.
+\end{enumerate}
+
+\subsubsection*{Theorem 1:}
+Let $X$ and $Y$ be two normed linear spaces over the same scalar field $K$. If $T: X \to Y$ is a linear map, then:
+
+\begin{enumerate}
+    \item $T(0) = 0$
+    \item The range of $T$ is given as $R(T) = \{y \in Y: y = T(x) \text{ for some } x \in X\}$ is a subspace of $Y$.
+    \item $T$ is onto one iff $T(0) = 0 \implies x = 0$.
+    \item If $T$ is one to one, then $T^{-1}: R(T) \to X$ is a linear map, and $T^{-1}$ exists in the range $R(T)$
+\end{enumerate}
+
+\subsubsection*{Proof:}
+\begin{enumerate}
+    \item Since $T$ is a liinear map, then $T(\alpha x) = \alpha T(x), where \alpha = 0$, then $T(\alpha.0) = 0$, hence $T(0) = 0$.
+    \item We need to show that
+\end{enumerate}
+
+\subsubsection*{Bound $\dots$}
+\subsubsection*{Definition 3:} Let $X,Y$, be two normed linear spaces over the same scalar field $K$. A linear map $T: X \to Y$ is said to be bounded if there exists a constant $K \geq 0$ such that $x \in X$ is given by: 
+
+\begin{math}
+    \|T(x)\| \leq K \|x\|, \forall x \in X
+\end{math}
+
+\subsubsection*{Theorem 2:} Let $X,Y$ be two normed linear spaces over the same scalar field $K$. If $T: X \to Y$ is a linear map, then the following statements are equivalent:
+
+\begin{enumerate}
+    \item $T$ is continuous
+    \item $T$ is continuous at $0$(origin) $i.e$ if ${x_n} \in X$, such that $Tx_n \to 0, n \to 0 $.
+    \item $T$ is lipshitz $i.e \text{ } \exists $ a constant $k \geq 0$, such that $\forall x \in X$ on $ \|T(x)\| \leq K \|x\|, \forall x \in X$.
+    \item if $D = \{x \in X:  \|x\| \leq 1\}$ is a closed unit disc in $X$, then $T(D)$ is bounded. That is $\exists M \geq 0$ such that $\|T(x)\| \leq M$ for all $x \in D$.
+\end{enumerate}
+
+\subsubsection*{Proof:}
+\begin{enumerate}
+    \item $1 \implies 2$:
+    \newline
+    Let $T$ be continuous at $0$, then for every $\epsilon > 0$, there exists $\delta > 0$ such that $\|x\| < \delta \implies \|T(x)\| < \epsilon$.
+    \newline
+    Let ${x_n} \in X$ such that $x_n \to 0$ as $n \to \infty$, then $\|x_n\| \to 0$ as $n \to \infty$.
+    \newline
+    Hence, $\|T(x_n)\| \to 0$ as $n \to \infty$.
+    \newline
+    $\implies T$ is continuous at $0$.
+    \item $2 \implies 3$:
+    \newline
+    Let $T$ be continuous at $0$, then for every $\epsilon > 0$, there exists $\delta > 0$ such that $\|x\| < \delta \implies \|T(x)\| < \epsilon$.
+    \newline
+    Let $x \in X$ be arbitrary, then $\|x\| < \delta \implies \frac{\|x\|}{\delta} < 1$.
+    \newline
+    $\implies \|T(x)\| = \|T(\frac{\|x\|}{\delta}.\delta)\| = \frac{\|x\|}{\delta}.\|T(\delta)\| < \epsilon$.
+    \newline
+    $\implies \|T(x)\| \leq \frac{\|x\|}{\delta}.\|T(\delta)\| < \epsilon$.
+    \newline
+    $\implies \|T(x)\| \leq K \|x\|$, where $K = \|T(\delta)\|$.
+    \newline
+    $\implies T$ is lipshitz.
+    \item $3 \implies 4$:
+    \newline
+    Let $T$ be lipshitz, then $\|T(x)\| \leq K \|x\|$, for all $x \in X$.
+    \newline
+    Let $D = \{x \in X: \|x\| \leq 1\}$ be a closed unit disc in $X$, then $T(D)$ is bounded.
+    \newline
+    $\implies \|T(x)\| \leq K \|x\| \leq K$, for all $x \in D$.
+    \newline
+    $\implies T$ is bounded.
+    \item $4 \implies 1$:
+    \item $1 \implies 2$:
+\end{enumerate}
+
+\newpage
+%Begin Chapter 4: Hilbert Spaces
+
+\section{Hilbert Spaces}
+\subsection*{Definition 1:} Let E be a linear space, an inner product on E is a function 
+\begin{math}
+    <.,.>: E \times E \to \mathcal{C}
+\end{math} with values in $\mathcal{C}$ such that the following three conditions are satisfied:
+\begin{enumerate}
+    \item $<x,x> \geq 0$ for all $x \in E$ and $<x,x> = 0$ if and only if $x = 0$ (Positive Definiteness)
+    \item $<x,y> = \overline{<y,x>}$ for all $x,y \in E$ (Conjugate Symmetry)
+    \item $< \lambda x + \mu y, z> = \lambda <x,z> + \mu <y,z>$ for all $x,y,z \in E$, $\lambda \in \mathcal{C}$
+\end{enumerate}
+$\text{x,y,z} \in E; \lambda, \mu \in \mathcal{C}$
+
+The pair $(E,<.,.>)$ is called an inner product space.
+
+\subsubsection*{Hilbert Space}
+A complete inner product space is called a Hilbert Space.
+
+\subsubsection*{Example 1:}
+The Linear space $ \mathcal{R}^n$ with $<,>$ defined for arbitrary vector $x = (x_1, x_2, \dots, x_n)$ and $y = (y_1, y_2, \dots, y_n)$ with $x,y \in \mathcal{R}^n$,
+
+\begin{math}
+    <x,y> = \sum_{i = 1}^{n} x_i.y_i
+\end{math}
+
+%TODO: Add proof for example 1 
+\subsubsection*{Proof:}
+\begin{enumerate}
+    \item $<x,x> = \sum_{i = 1}^{n} x_i.x_i = \sum_{i = 1}^{n} x_i^2 \geq 0$ for all $x \in \mathcal{R}^n$ and $<x,x> = 0$ if and only if $x = 0$.
+    \item $<x,y> = \sum_{i = 1}^{n} x_i.y_i = \sum_{i = 1}^{n} y_i.x_i = <y,x>$ for all $x,y \in \mathcal{R}^n$.
+    \item $< \lambda x + \mu y, z> = \sum_{i = 1}^{n} (\lambda x_i + \mu y_i).z_i = \lambda \sum_{i = 1}^{n} x_i.z_i + \mu \sum_{i = 1}^{n} y_i.z_i = \lambda <x,z> + \mu <y,z>$ for all $x,y,z \in \mathcal{R}^n$ and $\lambda, \mu \in \mathcal{R}$.
+\end{enumerate}
+
+\subsubsection*{Basic Properties of Linear Product Space}
+from (Def 1), the immediate consequence of $I_{2}$ and $I_{3}$ is that for arbitrary $x,y,z \in E; \lambda, \mu \in C$.
+
+\begin{eqnarray*}
+    \biggl<z, \lambda x + \mu y\biggr> = \overline{\biggl<z, \lambda x + \mu y \biggr>} \\
+    &= \overline{\biggl<(x,z)\lambda + \mu (y,z) \biggr>} \\
+    &= \overline{\lambda} \biggl<x,z\biggr> + \overline{\mu} \biggl<y,z\biggr> \\
+\end{eqnarray*}
+
+\subsubsection*{Proposition 1:}
+Cauchy-Schwarz Inequality: Let $(E,<.,.>)$ be an inner product space, then for all $x,y \in E$,we have:
+
+$|<x,v>|^2 \leq \text{   } <x,x>.<y,y>$ and 
+$|<x,v>|^2 = \text{   } <x,x>.<y,y>$, if and only if $x$ and $y$ are linearly dependent.
+
+\subsubsection*{Proof:}
+Let $x,y \in E$, then for arbitrary $z \in \mathcal{C}$, we have:
+$|z|=1$, such that $z<x,y> = |z|<x,y>$ = $1.<x,y>$,
+
+set $a = <x,x>, b= <x,y> \text{ and } c=<y,y>, then for arbitiary scalar t \in \mathcal{R}, we obtain:$
+
+\begin{math}
+    <tzx+y,tzx+y> \leq 0 \\
+    \implies t^2z\bar{z}<x,x> + tz<x,y> + t\bar{y,z}<y,y> \geq 0 \\
+    \implies t^2<a> + 2t<zx,y> + <y,y> \leq 0 \\
+    \implies t^2a + 2tb + c \leq 0 \\
+\end{math}
+from theory if quadratic equation, we have that $b^{2} \leq ac$
+\begin{math}
+    \implies <x,y>^2 \leq \text{  } <x,x>.<y,y> \\
+    \implies |<x,y>|^2 \leq <x,x>.<y,y> \\
+\end{math}
+
+
+\subsubsection*{Parallelogram Law}
+Let $(E,<.,.>)$ be an inner product space, then for all $x,y \in E$, we have:
+
+\begin{math}
+    ||x+y||^2 + ||x-y||^2 = 2(||x||^2 + ||y||^2)
+\end{math}
+
+\subsubsection*{Consequence: Polarization Identity}
+Let $(E,<.,.>)$ be an inner product space, then for all $x,y \in E$, we have:
+
+\begin{math}\label{eq:*}
+    <x,y> = \frac{1}{4} \biggl(||x+y||^2 - ||x-y||^2 + i||x+iy||^2 - i||x-iy||^2 \biggr)
+\end{math}
+
+
+\subsubsection*{Theorem:}
+Let $E$ be a Hilbert space,and $K$ be a closed convex subset of $E$, then $K$ contains a unique vector of minimum norm.
+
+\subsubsection*{Proof:}
+Let $\gamma = \text{ inf }{|x|: x \in K}$, choose a sequence ${x_n}^{\infty}_{n=1}$ in $K$ such that $||x_n|| \to \gamma$ as $n \to \infty$.using Parallelogram law and the convexity of $K$, we have the following estimate:
+
+\begin{math}
+    ||x_n - x_m||_{2} = \frac{1}{2} \biggl(||x_n||^2 + ||x_m||^2 \biggr) - 4||\frac{x_n + x_m}{2}||^{2} \to 0, m,n  \to \infty \\
+    \text{ since } \frac{x_n + x_m}{2} \in K, \text{ so } ||\frac{x_n + x_m}{2}||^{2}|| \geq \gamma
+\end{math}
+
+Hence the sequence ${x_n}^{\infty}_{n=1}$ is a Cauchy sequence in $K$ and since $K$ is closed, thus the sequence has a limit say $x^* \in K$.
+Observe that $|| x^* || = ||lim x_n|| = \lim ||x_n|| = \gamma; u \in k, u \ne x^*$ and $||u|| = \gamma$, then $||x^* - u||^2 = 4\gamma^2 - 4||\frac{x^* + u}{2}||^2 \ge 0$
+
+$4\gamma^2 \ge 4||\frac{x^* + u}{2}||^2$
+$||\frac{x^* + u}{2}|| \le \gamma$, and since the convexity of $K$, we have $\frac{x^* + u}{2} \in K$.Then this is a contradiction, hence $u = x^*$
+
+\subsubsection*{Norms from Inner Product}
+let $\phi \ne V$, be a linear space, but necesarily a normed space. Let $<.,.>$ be an inner product on $V$, then for all $x \in V$, we define a function $\mu: \text{ V } \text{X} \text{ V } \to \mathcal{R}$. \\
+\begin{math}
+    \rho(x,y) = 
+\begin{cases} 
+    1 & x\ne 0 \\
+    0 & x=y \\
+  
+ \end{cases}
+\end{math}
+ as a metric on V. if V is a normed linear space, the norm $||.||$ can also induce a metric on V given by $\rho(x,y) = ||x-y||$ for all $x,y \in V$.It can be shown that a a metric $\rho$ on a metric space M, is induced if the following conditions are satisfied:
+
+    \begin{enumerate}
+        \item $\rho(x,y) \ge 0$ for all $x,y \in M$ and $\rho(x,y) = 0$ if and only if $x = y$.
+        \item $\rho(x,y) = \rho(y,x)$ for all $x,y \in M$.
+        \item $\rho(x,y) \le \rho(x,z) + \rho(z,y)$ for all $x,y,z \in M$.
+    \end{enumerate}
+
+\subsubsection*{Theorem: Jordan-Von Neumann}
+The norm of a normed linear space is given by an inner product if and only if it satisfies the parallelogram law. that is for all $x,y \in V$, we have:
+$||x+y||^2 + ||x-y||^2 = 2(||x||^2 + ||y||^2)$
+
+\subsubsection*{Proof:}
+$(\implies)$: Assume that the norm is given by an inner product, $||x||^2 = <x,x>$, then for all $x,y \in V$, then the parallelogram law is satisfied. 
+\newline
+\begin{math}
+    ||x+x||^2 + ||x-x||^2 = 2(||x||^2 + ||x||^2) \\
+    ||2x||^2 = 4||x||^2 \\
+    4||x||^2 = 4||x||^2 \\
+\end{math}
+\newline
+$(\impliedby)$: Assume that the norm satisfies the parallelogram law, then for all $x,y \in V$, we have:
+$||x||^2 = <x,x>$
+Define for arbitrary $x,y \in E$,
+\begin{math}\label{eq:*}
+    <x,y> = \frac{1}{4} \biggl(||x+y||^2 - ||x-y||^2 + i||x+iy||^2 - i||x-iy||^2 \biggr)
+\end{math}
+Observe immediately that $<x,x> = ||x||^2$ for all $x \in V$. is satisfied by definition of the above, and we that is indeed an inner product on V.
+
+\begin{enumerate}
+    \item $I_1$: $<x,x> = ||x||^2 \ge 0, and ||x||^2 = 0, \text{ iff }, x = 0$
+    \item $I_2$: $\text{if } <x,y> = \bar{<y,x>}$
+    \begin{math}
+        <x,y> = \frac{1}{4} \biggl(||x+y||^2 - ||x-y||^2 + i||x+iy||^2 - i||x-iy||^2 \biggr) \\
+        = \frac{1}{4} \biggl(||y+x||^2 - ||y-x||^2 + i||y+ix||^2 - i||y-ix||^2 \biggr) \\
+        = \frac{1}{4} \biggl(||y+x||^2 - ||y-x||^2 - i||y+ix||^2 + i||y-ix||^2 \biggr) \\
+        = \bar{<y,x>}
+    \end{math}
+    \item $I_3$: $\text{if } <\lambda x + \mu y, z> = \lambda <x,z> + \mu <y,z>$
+    Consider for arbitrary $x,y,z \in E$, and a complex scalar $\lambda \in \mathcal{C}$, we have the following:
+    \begin{math}
+        <x+z, y> = <x,y> + <z,y> \\
+        <\lambda x, y> = \lambda <x,y> \\
+    \end{math} 
+    observe that using equation \ref{eq:*}, and considering the real and imaginery part seperately, we have:
+    \begin{math}
+        \mathit{Re}<x+y,z> + \mathit{Re}<x-y,z> = \frac{1}{4}\biggl\{||x+y+z||^2 - ||x+y-z||^2+||x-y+z||^2 - ||x-y-z||^2\biggr\} \\
+        \text{ expand: } \\
+        \frac{1}{4}\biggl\{2||x+z||^2 - 2||x-z||^2\biggr\} \\
+        = 2\mathit{Re}<x,z> \\
+        \text{ Hence, } \\
+        \mathit{Re}<x+y,z> + \mathit{Re}<x+y,z> = 2\mathit{Re}<x,z>\label{a}  \\
+    \end{math}
+    replace y by x:
+    \begin{math}
+        \mathit{Re}<2x,z> + \mathit{Re}<0,z> = 2\mathit{Re}<x,z>\label{b} \\
+        \text{ from the two result, we have: } \\
+        \mathit{Re}<x+y,z> + \mathit{Re}<x-y,z> = \mathit{Re}<2x,z> \\
+        \text{ Similarly,replacing x by }  \frac{1}{2}(x+y)  \text{and y by } \frac{1}{2}(x-y) \\
+        \mathit{Re}<x,y+z> + \mathit{Re}<x,y-z> = \mathit{Re}<x,2y> \\
+        \text{becomes} \\
+        \mathit{Re}<x,z> + \mathit{Re}<y,z> = \mathit{Re}<x+y,z> \\
+    \end{math}
+    Similarly, for the imaginery part, we have:
+    \begin{math}
+        \mathit{Im}<x+y,z> + \mathit{Im}<x-y,z> = \mathit{Im}<2x,z> \\
+        \text{ Similarly,replacing x by }  \frac{1}{2}(x+y)  \text{and y by } \frac{1}{2}(x-y) \\
+        \mathit{Im}<x,z> + \mathit{Im}<y,z> = \mathit{Im}<x+y,z> \\
+    \end{math}
+    Hence, we have:
+    \begin{math}
+        <x+y,z> = <x,z> + <y,z>
+    \end{math}
+    By induction for any positive integer n, we have:
+    \begin{math}
+        <nx,Z> = n<x,z> \\
+        <-x,y> = -<x,y>
+    \end{math}
+    and from definition, $<nx,y> = n<x,y>$
+\end{enumerate}
+
+\subsection*{Orthonormal Set}
+\subsubsection*{Definition 1:}
+Two vectors $x,y \in E$ are said to be orthogonal if $<x,y> = 0$. A set $S \subset E$ is said to be orthogonal if $<x,y> = 0$ for all $x,y \in S$ with $x \ne y$, and is written as $x \perp y$., if the inner product is equal to zero. Since $<x,y> = \bar{<y,x>}$, it follows that $x \perp y$ if and only if $y \perp x$.Further more $x \perp x$ if and only if $x = 0$.
+
+\subsubsection*{Definition 2:}
+A set $S$ in an inner product space $E$ is called an orthogonal set if $x \perp y$ for all $x,y \in S$ with $x \ne y$. A set $S$ is called an orthonormal set if $S$ is an orthogonal set and $||x|| = 1$ for all $x \in S$.
+example: space $\mathit{l}_2$
+
+\subsubsection*{Bessel Inequality}
+if $\{U_i\}_{i=1}^{\infty}$ is an orthonormal set in an inner product space $E$, then for all $x \in E$, we have:
+\begin{math}
+    \sum_{i=1}^{\infty} |<x,u_i>|^2 \le ||x||^2
+\end{math}
+furthermore, if $\sum_{i=1}^{\infty} |<x,u_i>|^2 = ||x||^2$, then $x = \sum_{i=1}^{\infty} <x,u_i>u_i$
+
+\subsubsection*{The Projection Theory}
+Using the concept of orthogonality, we shall extend the well known elementary fact, that the shortest distance from a point to a line is the perpendicular distance from the point to the line. Let $E$ be an inner product space, and $M$ be a closed subspace of $E$. For each $x \in E$, we define the distance from $x$ to $M$ by:
+\begin{math}
+    ||x-m^*|| = inf\{||x-m||: m \in M\}
+\end{math}
+Then $m^*$ is unique, in fact $m^*$ is the unique vector in $M$ such that if and only if $x-m^* \perp M$. The vector $m^*$ is called the projection of $x$ on $M$.
+\subsubsection*{Proof:}
+$(\implies)$: Let $m^* \in M$ be the unique, assume for contradiction that this is not the case, then $\exists 0 \ne m_{0} \in M,$ that is not orthogonal to $(x-m^*)$.
+without loss of generality, we may assume that $||m_0|| = 1$, then $<x-m^*,m_0> \ne 0$.since $m_0$ is not orthogonal to $(x-m^*)$, we let the inner product $<x-m^*,m_0> = \alpha \ne 0$. Now, consider the vector $m^* + \lambda m_0$, where $\lambda \in \mathcal{R}$, then:
+\begin{equation*}
+    ||x-(m^* + \lambda m_0)||^2 = ||x-m^*||^2 + \lambda^2||m_0||^2 - 2\lambda<x-m^*,m_0> \\
+    = ||x-m^*||^2 + \lambda^2 - 2\lambda \alpha \\
+\end{equation*}
+This contradicts the hypothesis that $m^*$ is the unique vector in $M$ such that $x-m^* \perp M$. Hence, $m^*$ is unique.
+\newline
+$(\impliedby)$: Let $m^*$ be the unique vector in $M$ such that $x-m^* \perp M$, then for all $m \in M, m \ne m^*$, we compute $||x-m||$
+\begin{equation*}
+    ||x-m||^2 = ||x-m^* + m^* - m||^2 \\
+    = ||x-m^*||^2 + ||m^* - m||^2 + 2<x-m^*,m^*-m> \\
+    = ||x-m^*||^2 + ||m^* - m||^2 + 2<x-m^*,m^*> \\
+    \ge ||x-m^*||^2
+\end{equation*}
+Hence, $||x-m^*||$ is the minimum distance from $x$ to $M$.
+
+\subsubsection*{Theorem:The Projection Theorem}
+Let $H$ be a Hilbert space, and $M$ be a closed subspace of $H$. Then for each $x \in H$, there exists a unique vector $m^* \in M$ such that $x-m^* \perp M$.There exists a unique vector $m^* \in M$ such that $||x-m^*|| \le ||x-m||$. furthermore $m^*$ is the unique vector in $M$ if and only if $(x-m^*) \perp M$.
+
+\subsubsection*{Proof of Projection Theorem}
+We shall consider only the existence of a minimum vector $m^*$, for the uniqueness we say if $x \in M$, then choose $m^* = x$, then there's nothing to prove.
+
+Assume that $x \ne m$, define $\delta = inf\{||x-m||: m \in M\}$, we need to generate $m^* \in M$ with $||x-m^*|| = \delta$. Let $\{m_n\}_{n=1}^{\infty}$ be a sequence in $M$ such that $||x-m_n|| \to \delta$ as $n \to \infty$. Since $M$ is closed, then $m^* = lim m_n \in M$, and $||x-m^*|| = \delta$. We need to show that $x-m^* \perp M$. Let $m \in M$, then:
+By Parallelogram Law
+\begin{eqnarray*}
+    ||(m_i - x) + (x- m_j)||^2 + ||(m_i - x) - (x- m_j)||^2 = 2(||m_i - x||^2 + ||x- m_j||^2) \\
+    \text{ Rearranging, we have: } \\
+    || m_i - m_j||^2 = 2(||m_i - x||^2 + ||x- m_j||^2) - 4||x - \frac{m_i + m_j}{2}||^2 \\
+    \text{ Since } m_i, m_j \in M, \text{ then } \frac{m_i + m_j}{2} \in M \\   
+\end{eqnarray*}
+Since $m$ is a linear subspace, hence by the definition of $\delta$
+\begin{math}
+    ||m_i - m_j||^2 = 2(||m_i - x||^2 + ||x- m_j||^2) - 4\delta^2 \\
+    \text{ Taking the limit as } i,j \to \infty
+\end{math}
+Hence the sequence ${m_n}^{\infty}_{n=1}$ is a Cauchy sequence in $M$, and since $M$ is closed, then $m^* = lim m_n \in M$, and $||x-m^*|| = \delta$. We need to show that $x-m^* \perp M$. Let $m \in M$. It follows that $x-m_j \to x-m_i$ as $j \to \infty$, so that by the uniqueness of the limit, we obtain $||x-m^*|| = \delta = \inf\{||x-m||: m \in M\}$.
+\newline
+The Consequence of projection Theorem is the "Direct Sum"
+
+\subsubsection*{Direct Sum}
+Let $E$ be a vector space, $E$ is said to be a direct of two subspaces $E_1$ and $E_2$ if $E_1 \cap E_2 = \{0\}$ and $E_1 + E_2 = E$. We write $E = E_1 \oplus E_2$. If $E$ is a direct sum of two subspaces $E_1$ and $E_2$, then for each $x \in E$, there exists a unique pair $(x_1,x_2)$ such that $x = x_1 + x_2$, where $x_1 \in E_1$ and $x_2 \in E_2$. The pair $(x_1,x_2)$ is called the decomposition of $x$ with respect to the direct sum $E = E_1 \oplus E_2$.
+
+\subsubsection*{Definition:}
+For a Hilbert space $H$, let $M$ be a closed subspace of $H$, then $H$ is said to be the orthogonal direct sum of $M$ and $M^{\perp}$, and is written as $H = M \oplus M^{\perp}$.
+
+\subsubsection*{Lemma:}
+Let $X_1$ and $X_2$ be two complete Orthonormal sets with inner product space $E$, then $X_1 \text{ and } X_2$ have the same cardinality.
+
+\subsubsection*{Cardinality}
+The dimension of innner product space is the cardinality of any complete orthonormal set in $B$.
+\subsubsection*{Definition}
+Let $X,Y$ be normed linear spaces, a linear map $T: X \to Y$ is said to be isometric if it is norm preserving, that is $||Tx|| = ||x||$ for all $x \in X$.
+\newline
+The Linear Map $T$ is called an isometric Isomorphism of $X,Y$ if:
+\begin{enumerate}
+    \item T is injective
+    \item $||Tx|| = ||x||$
+\end{enumerate}
+If $T$ is a bijective isometric isomorphism of $X,Y$, then $X$ and $Y$ are said to be isometrically isomorphic, and we write $X \cong Y$.
+
+\subsubsection*{Adjoint Operators on Hilbert Spaces}
+\subsubsection*{Definition}
+Let $H$ be a Hilbert space, and $T: H \to H$ be a linear map, then there exists a unique linear map $T^*: H \to H$ such that $<Tx,y> = <x,T^*y>$ for all $x,y \in H$. The map $T^*$ is called the adjoint of $T$.
+
+\subsubsection*{Definition: Self, Adjoint,and Unitary Operators}
+Let $H$ be a Hilbert space, and $T: H \to H$ be a linear map, then $T$ is said to be:
+\begin{enumerate}
+    \item Self Adjoint if $T = T^*$
+    \item Unitary if $T^*T = I$
+    \item Normal if $TT^* = T^*T$ 
+\end{enumerate}
+\end{document}
+
+
